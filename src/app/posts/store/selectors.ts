@@ -7,11 +7,11 @@ export const isLoadingSelector = createSelector(
     selectFeature, 
     (state) => state.isLoading 
 )
-export const isSuccessSelector = createSelector(
+export const successSelector = createSelector(
     selectFeature, 
     (state) => state.posts 
 )
-export const isErrorSelector = createSelector(
+export const errorSelector = createSelector(
     selectFeature, 
     (state) => state.error 
 )
