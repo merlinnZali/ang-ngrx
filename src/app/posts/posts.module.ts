@@ -6,7 +6,7 @@ import { PostsService } from './services/posts.service';
 import { reducers } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { PostsEffects } from './store/effects';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { PostsEffects } from './store/effects';
     PostsComponent
   ],
   imports: [
-    CommonModule, 
+    CommonModule, FormsModule,
     // Here we load the posts reducer into the store
     StoreModule.forFeature('posts', reducers),
     EffectsModule.forFeature([PostsEffects])

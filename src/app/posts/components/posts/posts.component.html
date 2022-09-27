@@ -7,8 +7,33 @@
     {{ error }}
 </div>
 
+
 <ng-template #other_content>
-    <div *ngFor="let post of posts$ | async ">
-        {{ post.title }}
+    <div [class.container]="true">
+        <div [class.post-create]="true">
+            <input type="text" name="title" id="title" 
+            placeholder="Enter a post title" 
+            [(ngModel)]="title" (keypress)="keyEvent($event)">
+
+            <button *ngIf="!updateMode"
+                (click)="addPost()" 
+                style="margin-left: 0.5em;">
+                Add a post
+            </button>
+            <button *ngIf="updateMode"
+                (click)="updatePostFinal()" 
+                style="margin-left: 0.5em;">
+                Update the selected post
+            </button>
+        </div>
+ 
+        <div *ngFor="let post of posts$ | async" [class.post]="true">
+            <span class="label"> {{ post.title }} </span>
+            <!-- <input type='checkbox' > -->
+            <button *ngIf="!updateMode" (click)="updatePost(post)" [class.action]="true">u</button> 
+            <button *ngIf="!updateMode" (click)="removePost(post)" class="action">x</button>
+        </div>
     </div>
 </ng-template>
+
+  

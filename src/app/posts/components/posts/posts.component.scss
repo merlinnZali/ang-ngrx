@@ -1,0 +1,39 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.post{
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 0px solid black;
+}
+
+.post-create{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: bold;
+  margin: 0.5rem;
+  font-size: 1.5em;
+  height: 100%;
+}
+
+.action {
+  font-weight: bold;
+  margin: 0.5rem;
+  font-size: 1.2em;
+  height: 100%;
+}
+  

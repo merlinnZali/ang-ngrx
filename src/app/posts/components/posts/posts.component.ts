@@ -15,6 +15,9 @@ export class PostsComponent implements OnInit {
   public isLoading$: Observable<boolean>;
   public error$: Observable<string|null>;
   public posts$: Observable<PostInterface[]>;
+  public post!: PostInterface;
+  public title = "";
+  public updateMode = false;
 
   constructor(private store: Store<AppStateInterface>) { 
     this.isLoading$ = this.store.pipe(select(isLoadingSelector))
@@ -26,4 +29,29 @@ export class PostsComponent implements OnInit {
     this.store.dispatch(PostActions.getPosts())
   }
 
+  addPost(){
+    this.post = {...this.post, title: this.title}
+    this.store.dispatch(PostActions.addPost({ post: this.post }));
+    this.title = ''
+  }
+  
+  updatePost(post: PostInterface){
+    this.post = post
+    this.title = post.title
+    this.updateMode = true
+  }
+  updatePostFinal(){
+    this.store.dispatch(PostActions.updatePost({ id: this.post?.id, post: {...this.post, title: this.title } }));
+    this.title = ''
+    this.updateMode = false
+  }
+
+  removePost(post: PostInterface){
+    this.store.dispatch(PostActions.removePost({ id: post.id }));
+  }
+  
+  keyEvent(event: any){
+    console.log(event)
+    console.log(this.title)
+  }
 }
